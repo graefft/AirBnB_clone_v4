@@ -1,6 +1,6 @@
 $(function(){
     const id_store = {}
-    $('input:checkbox').click(function(){
+    $('input:checkbox').change(function(){
         if($(this).is(":checked")){
             id_store[$(this).data-id] = $(this).data-name;
         }
