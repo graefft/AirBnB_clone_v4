@@ -12,6 +12,7 @@ $(function () {
     });
 });
 
+
 $(function () {
   $.get('http://0.0.0.0:5001/api/v1/status/', function (data, status) {
         if (status === 'success') {
@@ -24,30 +25,32 @@ $(function () {
     });
 });
 
+
 $(function () {
     $.ajax({
         type: 'POST',
         url: 'http://0.0.0.0:5001/api/v1/places_search/',
         contentType: 'application/json',
-        data: JSON.stringify(amenities),
+        data: JSON.stringify({}),
         success: function(result) {
             for (let place of result){
                 let articleTag = '<article>' + '<div class="title">' +
-                '<h2>' + place.name + '</h2>' + <div class='price_by_night' +
+                '<h2>' + place.name + '</h2>' + '<div class="price_by_night">' +
                 '$' + place.price_by_night + '</div>' + '</div>' +
-                'div class="information">' + '<div class="max guest">' +
+                '<div class="information">' + '<div class="max_guest">' +
                 '<i class="fa fa-users fa-3x" aria-hidden="true"></i>' +
-                '<br />' + place.max_guest + 'Guests' + '</div>' +
-                '<div class="number_bathrooms">' +
+                '<br />' + place.max_guest + ' Guests' + '</div>' +
+                '<div class="number_rooms">' +
                 '<i class="fa fa-bath fa-3x" aria-hidden="true"></i>' +
-                '<br />' + place.number_roomsi + ' Bedrooms' + '</div>' +
+                '<br />' + place.number_rooms + ' Bedrooms' + '</div>' +
                 '<div class="number_bathrooms">' +
                 '<i class="fa fa-bath fa-3x" aria-hidden="true"></i>' +
                 '<br />' + place.number_bathrooms + ' Bathroom' +
-                '</div>' + '</div>' + '</article>';
-                $('section.places').append(articleTag);
-            }
+                '</div>' + '</div>' + '<div class="user">' +
 
+                '<div class="description">' + place.description + '</div>' + '</article>';
+                $('section.places').append(articleTag);
+           }
         }
     });
 });
